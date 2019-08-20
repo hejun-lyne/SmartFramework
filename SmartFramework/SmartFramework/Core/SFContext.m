@@ -22,7 +22,7 @@
 
 static char* kComponentSectionName = "STComponent";
 
-NSArray<NSString *>* ATHReadSectionData(char *sectionName,const struct mach_header *mhp)
+NSArray<NSString *>* SFReadSectionData(char *sectionName,const struct mach_header *mhp)
 {
     NSMutableArray *configs = [NSMutableArray array];
     unsigned long size = 0;
@@ -45,9 +45,9 @@ NSArray<NSString *>* ATHReadSectionData(char *sectionName,const struct mach_head
 }
 
 
-static void _breakupSectionData(char *secName, const struct mach_header *mhp, void(^iterationBlock)(NSArray *parts))
+static void SFBreakupSectionData(char *secName, const struct mach_header *mhp, void(^iterationBlock)(NSArray *parts))
 {
-    NSArray <NSString *> *strings = ATHReadSectionData(secName, mhp);
+    NSArray <NSString *> *strings = SFReadSectionData(secName, mhp);
     if (strings.count > 0) {
         for (NSString *str in strings) {
             NSArray *parts = [str componentsSeparatedByString:@"#"];
@@ -56,9 +56,9 @@ static void _breakupSectionData(char *secName, const struct mach_header *mhp, vo
     }
 }
 
-static void ath_onloaded(const struct mach_header *mhp, intptr_t vmaddr_slide)
+static void sf_onloaded(const struct mach_header *mhp, intptr_t vmaddr_slide)
 {
-    _breakupSectionData(kComponentSectionName, mhp, ^(NSArray *parts) {
+    SFBreakupSectionData(kComponentSectionName, mhp, ^(NSArray *parts) {
         Class clazz = NSClassFromString(parts[0]);
         if (clazz == nil) {
             return;
@@ -78,7 +78,7 @@ static void ath_onloaded(const struct mach_header *mhp, intptr_t vmaddr_slide)
 __attribute__((constructor))
 void initProphet()
 {
-    _dyld_register_func_for_add_image(ath_onloaded);
+    _dyld_register_func_for_add_image(sf_onloaded);
 }
 
 #pragma mark - SFContext
