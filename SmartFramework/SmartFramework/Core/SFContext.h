@@ -16,7 +16,7 @@
 
 /*
  * Delare data section
- * e.g. SF_SECTION(ATH_CONCAT(ATH, __FILE__))
+ * e.g. SF_SECTION(SF_CONCAT(ATH, __FILE__))
  */
 #define SF_SECTION(name) __attribute((used, section("__DATA,"#name" ")))
 

@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SFComponent;
 #if __cplusplus
 extern "C" {
 #endif
-    NSArray<SFComponent *> *AllOnLoadSFComponents();
+    NSArray<SFComponent *> *AllOnLoadSFComponents(void);
     SFComponent * SFComponentForProtocol(Protocol *proto);
 #if __cplusplus
 }
 #endif
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface SFComponent : NSObject
 @property (nonatomic, strong) Class clazz;

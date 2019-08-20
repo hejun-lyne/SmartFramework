@@ -8,6 +8,8 @@
 
 #import "SFComponent.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SFProxy;
 #if __cplusplus
 extern "C" {
@@ -16,8 +18,6 @@ extern "C" {
 #if __cplusplus
 }
 #endif
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface SFProxy : NSObject
 
