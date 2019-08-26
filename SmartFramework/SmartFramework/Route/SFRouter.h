@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SFRouterInterceptor.h"
 
 #define SFRouteDeclareConcretely(__NAME__,__URILIST__,__paramsAndResult__) \
 - (void)_UriRoute##__NAME__ \
@@ -19,12 +18,22 @@
 }\
 - (BOOL)on##__NAME__##Action:(NSDictionary *)__paramsAndResult__
 
+/// Route declare
 #define SFRouteDeclare(__NAME__,__URILIST__) URIRegisterConcretely(__NAME__,__URILIST__,paramsAndResult)
+
+/// Interceptro declare
+#define SF_ROUTE_INTERCEPTOR(clazz) \
+char * _sfRouter_##clazz __attribute((used, section("__DATA,SFRoute "))) = ""#clazz"";
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef BOOL (^SFRouteActionBlock)(NSMutableDictionary *paramsAndResult);
 typedef void (^SFRouteCallback)(BOOL success, NSDictionary * _Nullable result);
+
+@protocol SFRouterInterceptor
+@property (nonatomic, class, readonly) NSUInteger priority;
+- (BOOL)interceptURI:(NSString *)uri parameters:(NSDictionary *)parameters;
+@end
 
 @interface SFRouter : NSObject
 

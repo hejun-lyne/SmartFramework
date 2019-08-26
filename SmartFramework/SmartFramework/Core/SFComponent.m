@@ -26,7 +26,7 @@ NSArray<SFComponent *> *AllOnLoadSFComponents() {
     NSArray *candidates = s_components.allValues;
     [s_comp_lock unlock];
     for (SFComponent *comp in candidates) {
-        if (!comp.onLoad) {
+        if (comp.type != SFComponentTypeOnLoad) {
             continue;
         }
         [result addObject:comp];
@@ -66,6 +66,8 @@ SFComponent *SFComponentForProtocol(Protocol *proto) {
         [s_classToProtocols setObject:protoName forKey:clsName];
         [s_components setObject:self forKey:protoName];
         [s_comp_lock unlock];
+        
+        [self setupBinding];
     }
     return self;
 }

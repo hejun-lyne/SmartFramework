@@ -8,24 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		79084EDC2306834B00AB4E92 /* SmartFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 79084EDA2306834B00AB4E92 /* SmartFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79FF5435230B8D9200B9D28F /* SFContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF5433230B8D9200B9D28F /* SFContext.h */; };
+		795F7FC52313818500C7A50C /* SFRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 795F7FC42313818500C7A50C /* SFRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79FF5435230B8D9200B9D28F /* SFContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF5433230B8D9200B9D28F /* SFContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79FF5439230BA45600B9D28F /* SFComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF5437230BA45600B9D28F /* SFComponent.h */; };
 		79FF543C230BA65C00B9D28F /* SFContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF543B230BA65C00B9D28F /* SFContext.m */; };
 		79FF543E230BA6A100B9D28F /* SFComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF543D230BA6A100B9D28F /* SFComponent.m */; };
 		79FF5441230BDBDD00B9D28F /* SFProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF543F230BDBDD00B9D28F /* SFProxy.h */; };
 		79FF5442230BDBDD00B9D28F /* SFProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5440230BDBDD00B9D28F /* SFProxy.m */; };
-		79FF5446230BF24D00B9D28F /* SFEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF5444230BF24D00B9D28F /* SFEvent.h */; };
+		79FF5446230BF24D00B9D28F /* SFEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF5444230BF24D00B9D28F /* SFEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79FF5447230BF24D00B9D28F /* SFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5445230BF24D00B9D28F /* SFEvent.m */; };
-		79FF544D230CDF3F00B9D28F /* SFRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF544B230CDF3F00B9D28F /* SFRouter.h */; };
 		79FF544E230CDF3F00B9D28F /* SFRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF544C230CDF3F00B9D28F /* SFRouter.m */; };
-		79FF5454230CE89800B9D28F /* SFRouteAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF5452230CE89800B9D28F /* SFRouteAction.h */; };
-		79FF5455230CE89800B9D28F /* SFRouteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FF5453230CE89800B9D28F /* SFRouteAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		79084ED72306834B00AB4E92 /* SmartFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmartFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79084EDA2306834B00AB4E92 /* SmartFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartFramework.h; sourceTree = "<group>"; };
 		79084EDB2306834B00AB4E92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		795F7FC42313818500C7A50C /* SFRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFRouter.h; sourceTree = "<group>"; };
 		79FF5433230B8D9200B9D28F /* SFContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFContext.h; sourceTree = "<group>"; };
 		79FF5437230BA45600B9D28F /* SFComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFComponent.h; sourceTree = "<group>"; };
 		79FF543B230BA65C00B9D28F /* SFContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFContext.m; sourceTree = "<group>"; };
@@ -34,11 +33,7 @@
 		79FF5440230BDBDD00B9D28F /* SFProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFProxy.m; sourceTree = "<group>"; };
 		79FF5444230BF24D00B9D28F /* SFEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFEvent.h; sourceTree = "<group>"; };
 		79FF5445230BF24D00B9D28F /* SFEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFEvent.m; sourceTree = "<group>"; };
-		79FF544B230CDF3F00B9D28F /* SFRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFRouter.h; sourceTree = "<group>"; };
 		79FF544C230CDF3F00B9D28F /* SFRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFRouter.m; sourceTree = "<group>"; };
-		79FF5452230CE89800B9D28F /* SFRouteAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFRouteAction.h; sourceTree = "<group>"; };
-		79FF5453230CE89800B9D28F /* SFRouteAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFRouteAction.m; sourceTree = "<group>"; };
-		79FF5456230CFEEC00B9D28F /* SFRouterInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFRouterInterceptor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +66,6 @@
 		79084ED92306834B00AB4E92 /* SmartFramework */ = {
 			isa = PBXGroup;
 			children = (
-				79FF5449230CDF1400B9D28F /* Logger */,
-				79FF544A230CDF1400B9D28F /* Social */,
 				79FF5448230C0FBF00B9D28F /* Route */,
 				79FF5443230BF23400B9D28F /* Event */,
 				79FF5432230B8D9200B9D28F /* Core */,
@@ -107,27 +100,10 @@
 		79FF5448230C0FBF00B9D28F /* Route */ = {
 			isa = PBXGroup;
 			children = (
-				79FF544B230CDF3F00B9D28F /* SFRouter.h */,
+				795F7FC42313818500C7A50C /* SFRouter.h */,
 				79FF544C230CDF3F00B9D28F /* SFRouter.m */,
-				79FF5452230CE89800B9D28F /* SFRouteAction.h */,
-				79FF5453230CE89800B9D28F /* SFRouteAction.m */,
-				79FF5456230CFEEC00B9D28F /* SFRouterInterceptor.h */,
 			);
 			path = Route;
-			sourceTree = "<group>";
-		};
-		79FF5449230CDF1400B9D28F /* Logger */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Logger;
-			sourceTree = "<group>";
-		};
-		79FF544A230CDF1400B9D28F /* Social */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Social;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,12 +113,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				795F7FC52313818500C7A50C /* SFRouter.h in Headers */,
 				79FF5439230BA45600B9D28F /* SFComponent.h in Headers */,
 				79084EDC2306834B00AB4E92 /* SmartFramework.h in Headers */,
-				79FF544D230CDF3F00B9D28F /* SFRouter.h in Headers */,
 				79FF5441230BDBDD00B9D28F /* SFProxy.h in Headers */,
 				79FF5446230BF24D00B9D28F /* SFEvent.h in Headers */,
-				79FF5454230CE89800B9D28F /* SFRouteAction.h in Headers */,
 				79FF5435230B8D9200B9D28F /* SFContext.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +163,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 79084ECD2306834B00AB4E92;
 			productRefGroup = 79084ED82306834B00AB4E92 /* Products */;
@@ -218,7 +194,6 @@
 				79FF544E230CDF3F00B9D28F /* SFRouter.m in Sources */,
 				79FF543E230BA6A100B9D28F /* SFComponent.m in Sources */,
 				79FF543C230BA65C00B9D28F /* SFContext.m in Sources */,
-				79FF5455230CE89800B9D28F /* SFRouteAction.m in Sources */,
 				79FF5447230BF24D00B9D28F /* SFEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +333,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SmartFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -383,6 +359,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SmartFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

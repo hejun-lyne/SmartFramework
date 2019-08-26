@@ -20,7 +20,7 @@
 
 #pragma mark __DATA Reader
 
-static char* kComponentSectionName = "STComponent";
+static char* kComponentSectionName = "SFComponent";
 
 NSArray<NSString *>* SFReadSectionData(char *sectionName,const struct mach_header *mhp)
 {
@@ -68,9 +68,14 @@ static void sf_onloaded(const struct mach_header *mhp, intptr_t vmaddr_slide)
             return;
         }
         SFComponent *comp = [[SFComponent alloc] initWithClass:clazz proto:proto];
-        BOOL onLoad = [parts[2] isEqualToString:@"OnLoad"];
-        NSUInteger priority = [parts[3] unsignedIntegerValue];
-        comp.onLoad = onLoad;
+        if ([parts[2] isEqualToString:@"OnLoad"]) {
+            comp.type = SFComponentTypeOnLoad;
+        } else if ([parts[2] isEqualToString:@"OnNeed"]) {
+            comp.type = SFComponentTypeOnNeed;
+        } else {
+            comp.type = SFComponentTypeOnPassive;
+        }
+        NSUInteger priority = [(NSString *)parts[3] integerValue];
         comp.priority = priority;
     });
 }
@@ -148,11 +153,11 @@ static inline void ASYNC_EXECUTE_IN_QUEUE(dispatch_block_t block) {
 #endif
     }
     
-    if (!comp.onLoad) {
+    if (comp.type == SFComponentTypeOnNeed) {
         // on needed, create instance
         return [comp getOrCreateInstance];
     }
-    if (!allowDelay) {
+    if (!allowDelay || comp.type == SFComponentTypeOnPassive) {
         // check instance
         return [comp getInstance];
     }

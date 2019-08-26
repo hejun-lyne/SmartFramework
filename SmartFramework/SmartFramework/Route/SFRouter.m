@@ -7,7 +7,6 @@
 //
 
 #import "SFRouter.h"
-#import "SFRouteAction.h"
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
@@ -94,6 +93,32 @@ void initRouteIntecptor()
 {
     _dyld_register_func_for_add_image(sf_router_onloaded);
 }
+@interface SFRouteAction : NSObject
++ (instancetype)actionWithBlock:(SFRouteActionBlock)block;
+- (BOOL)execute:(NSMutableDictionary *)result;
+@end
+
+@interface SFRouteAction()
+@property (nonatomic, copy) SFRouteActionBlock actionBlock;
+@end
+@implementation SFRouteAction
+
++ (instancetype)actionWithBlock:(SFRouteActionBlock)block
+{
+    SFRouteAction *act = [SFRouteAction new];
+    act.actionBlock = block;
+    return act;
+}
+
+- (BOOL)execute:(NSMutableDictionary *)result
+{
+    if (self.actionBlock == nil) {
+        return NO;
+    }
+    return self.actionBlock(result);
+}
+
+@end
 
 @implementation SFRouter
 {

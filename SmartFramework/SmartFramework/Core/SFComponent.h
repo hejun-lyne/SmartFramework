@@ -20,10 +20,16 @@ extern "C" {
 }
 #endif
 
+typedef enum : NSUInteger {
+    SFComponentTypeOnLoad,
+    SFComponentTypeOnNeed,
+    SFComponentTypeOnPassive,
+} SFComponentType;
+
 @interface SFComponent : NSObject
 @property (nonatomic, strong) Class clazz;
 @property (nonatomic, strong) Protocol *proto;
-@property (nonatomic, assign) BOOL onLoad;
+@property (nonatomic, assign) SFComponentType type;
 @property (nonatomic, assign) NSUInteger priority;
 
 - (instancetype)initWithClass:(Class)clazz proto:(Protocol *)proto;

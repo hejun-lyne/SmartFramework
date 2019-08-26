@@ -15,12 +15,6 @@
 #define SF_CONCAT(A, B) SF_CONCAT2(A, B)
 
 /*
- * Delare data section
- * e.g. SF_SECTION(SF_CONCAT(ATH, __FILE__))
- */
-#define SF_SECTION(name) __attribute((used, section("__DATA,"#name" ")))
-
-/*
  * Get unique string（__LINE__ && __COUNTER__）
  * e.g. ATH_UNIQUE_NAME(login)
  */
@@ -32,11 +26,14 @@
  *  char *mUniqueString __attribute((used, section("__DATA,"STComponent" "))) = "ProtoImplClass#Proto#OnNeed#1"
  *  @param _protocol_ Interfaces
  *  @param classname  Implementation
- *  @param type       Init type, OnLoad / OnNeed
+ *  @param type       Init type, OnLoad(creat on load) / OnNeed(create on protocol method called) / OnPassive (create on [-(void)alloc] called)
  *  @param priority   Init priority, Only valid for OnLoad
  */
 #define SF_COMPONENT(_protocol_, classname, type, priority) \
-char * SF_UNIQUE_STRING(classname) SF_SECTION("STComponent") = ""#classname"#"#_protocol_"#"#type"#"#priority""; \
+char *SF_UNIQUE_STRING(classname) __attribute((used, section("__DATA,SFComponent"))) = ""#classname"#"#_protocol_"#"#type"#"#priority"";
+
+#define SF_EXECUTOR(_protocol_) (id<_protocol_>)[SFContext executorFor:@protocol(_protocol_) allowDelay:YES]
+#define SF_EXECUTOR_ASYNC(_protocol_) (id<_protocol_>)[SFContext executorFor:@protocol(_protocol_) allowDelay:NO]
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -64,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Get executor for protocol
  *  @param protocol     Protocol
- *  @param allowDelay   If YES，Will wait for component finishing init (means async).
+ *  @param allowDelay   If YES，Will wait for component finishing init (means async).Only for OnLoad type component
  */
 + (id)executorFor:(Protocol *)protocol allowDelay:(BOOL)allowDelay;
 
