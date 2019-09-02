@@ -105,6 +105,7 @@ static inline void ASYNC_EXECUTE_IN_QUEUE(dispatch_block_t block) {
 @implementation SFContext
 {
     NSMutableDictionary *_globalDictionary;
+    NSDictionary *_launchOptions;
 }
 
 + (void)initialize
@@ -140,6 +141,20 @@ static inline void ASYNC_EXECUTE_IN_QUEUE(dispatch_block_t block) {
         }
         [context->_globalDictionary setObject:value forKey:key];
     });
+}
+
++ (NSDictionary *)globalDictionary
+{
+    __block NSDictionary *result = nil;
+    SYNC_EXECUTE_IN_QUEUE(^{
+        result = [((SFContext *)(self.shared))->_globalDictionary copy];
+    });
+    return result;
+}
+
++ (NSDictionary *)launchOptions
+{
+    return ((SFContext *)[self shared])->_launchOptions;
 }
 
 + (id)executorFor:(Protocol *)protocol allowDelay:(BOOL)allowDelay

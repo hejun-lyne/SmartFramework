@@ -39,9 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SFContext : NSObject
 /// Passing parameters between components
-@property (nonatomic, readonly) NSDictionary *globalDictionary;
+@property (nonatomic, class, readonly) NSDictionary *globalDictionary;
 /// App launch options, from AppDelegate
-@property (nonatomic, readonly, nullable) NSDictionary *launchOptions;
+@property (nonatomic, class, readonly, nullable) NSDictionary *launchOptions;
 
 - (instancetype)init NS_UNAVAILABLE;
 
